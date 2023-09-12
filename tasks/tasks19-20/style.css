@@ -1,0 +1,92 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+h1 {
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+
+#container {
+  border: 1px solid rgba(255, 255, 255, 0.116);
+  border-radius: 5px;
+  width: 1000px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  height: 800px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#authButton {
+  width: 220px;
+  height: 40px;
+  cursor: pointer;
+}
+
+img {
+  width: 800px;
+  height: 600px;
+  border-radius: 20px;
+}
+
+#container::-webkit-scrollbar {
+  width: 10px;
+}
+
+#container::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #f9f9fd;
+  border-radius: 10px;
+}
+
+#container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(22, 22, 22, 0.87);
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 3px rgba(255, 255, 255, 0.116) solid;
+  padding: 30px;
+}
+
+.post_info {
+  display: flex;
+  gap: 5px;
+}
+
+.post_info > p {
+  border: 1px solid rgba(255, 255, 255, 0.219);
+  padding: 2px 8px;
+  font-size: 18px;
+  border-radius: 5px;
+}

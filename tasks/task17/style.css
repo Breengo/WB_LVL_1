@@ -1,0 +1,60 @@
+:root {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.76);
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  color: black;
+  font-size: 20px;
+}
+
+div {
+  background-color: rgba(255, 255, 255, 0.274);
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  border-radius: 10px;
+  padding: 10px;
+}
+#list {
+  background: none;
+}
+
+p {
+  margin: 0;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.445);
+  }
+}

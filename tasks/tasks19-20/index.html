@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <h1>Vidget</h1>
+    <div id="container">
+      <button id="authButton">Auth</button>
+    </div>
+  </body>
+  <script type="module" src="/task19.js"></script>
+  <script>
+    const checkRemainingSpace = () => {
+      var currentSize = Math.round(
+        JSON.stringify(window.localStorage.getItem("data")).length / 1024
+      );
+      const maxSize = window.localStorage.getItem("size");
+      console.log(`Current: ${currentSize} | Max: ${maxSize}`);
+    };
+    let data = [];
+    let offset = 0;
+    const queryString = window.location.hash;
+    const urlParams = new URLSearchParams(queryString);
+    const token = urlParams.get("#access_token");
+
+    function callbackFunc(result) {
+      if (result && result.response && result.response.items) {
+        window.document.querySelector("button").style.display = "none";
+        result.response.items.forEach((item) => {
+          const div = window.document.createElement("div");
+          div.classList.add("post");
+          const photo = item.attachments[0] && item.attachments[0].photo;
+          if (photo) {
+            div.innerHTML = `<img src="${
+              photo.sizes[photo.sizes.length - 1].url
+            }" />
+          <div class="post_info">
+            <p>Likes: ${item.likes.count}</p>
+            <p>Reposts: ${item.reposts.count}</p>
+            <p>Views: ${item.views.count}</p>
+            <p>Date: ${new Date(item.date * 1000)}</p>
+          </div>`;
+          }
+          window.document.querySelector("#container").appendChild(div);
+        });
+        data.push(...result.response.items);
+        try {
+          window.localStorage.setItem("data", JSON.stringify(data));
+          window.localStorage.setItem("offset", offset);
+        } catch (error) {
+          data.splice(0, 200);
+          window.localStorage.setItem("data", JSON.stringify(data));
+          window.localStorage.setItem("offset", offset);
+        }
+      }
+      checkRemainingSpace();
+    }
+
+    const fetchData = () => {
+      var script = document.createElement("SCRIPT");
+      script.src = `https://api.vk.com/method/wall.get?access_token=${token}&domain=dobroeytr0&v=5.131&offset=${offset}&count=100&callback=callbackFunc`;
+      document.getElementsByTagName("head")[0].appendChild(script);
+      offset += 100;
+    };
+  </script>
+</html>
